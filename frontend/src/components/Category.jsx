@@ -6,14 +6,23 @@ import Card from './Card';
 const Category = () => {
 
   const [items,setItems] = useState([]);
+  const [filteredItems,setFilteredItems] = useState([]);
+  const [categories,setCategories] = useState([]);
+  const [selectedCategory, setSelectedCategory] = useState('');
   useEffect(()=>{
     async function fetch(){
       const res = await api.get("/menu");
-      // setItems(res.data.response);
       setItems(res.data.response);
+      setFilteredItems(res.data.response);
+      setCategories(res.data.categories);     
     }
     fetch();
   },[])
+
+  useEffect(()=>{
+    const filterItems = selectedCategory? items.filter(item => item.category === selectedCategory): items; 
+    setFilteredItems(filterItems);
+  },[selectedCategory,items])
 
   return (
     <div className='flex-1 md:mx-32 '>
@@ -26,8 +35,22 @@ const Category = () => {
         </div>
       </div>
       <div className="category px-4 ">
+        <div className="categories-list flex gap-3">
+            <div 
+              className={`px-3 py-2 rounded-2xl text-xl border-2 cursor-pointer hover:bg-zinc-900 hover:text-zinc-100 ${selectedCategory===''?"bg-zinc-900 text-zinc-100 ":null}`}
+              onClick={()=>setSelectedCategory('')}>
+               All
+            </div>
+            {categories.map((category,index)=>(
+              <div key={index} 
+                className={`px-3 py-2 rounded-2xl text-xl border-2 cursor-pointer hover:bg-zinc-900 hover:text-zinc-100 ${selectedCategory===category?"bg-zinc-900 text-zinc-100 ":null}`}
+                onClick={()=>setSelectedCategory(category)}>
+                {category}
+              </div>
+            ))}
+        </div>
         <div className="cards my-4 flex flex-wrap gap-4">
-         {items.map((item,index)=>(
+         {filteredItems.map((item,index)=>(
             <Card key={index} item={item} />
          ))}
         </div>

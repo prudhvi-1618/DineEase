@@ -17,10 +17,10 @@ const Card = ({item}) => {
     }
   return (
     <div className="card w-[240px] bg-[#FDAA5D] rounded-2xl flex flex-col justify-center items-center gap-1">
-        <div className="image w-[240px] flex justify-center items-center ">
-        <img src={item.imageUrl} alt="" srcset="" className='rounded-t-2xl'/>
+        <div className="image w-[240px] h-[240px] flex justify-center items-center overflow-hidden ">
+        <img src={item.imageUrl} alt="" srcset="" className='rounded-t-2xl w-full h-full object-cover'/>
         </div>
-        <div className="item-name text-3xl font-medium ">{item.name}</div>
+        <div className="item-name text-2xl font-medium ">{item.name}</div>
         <div className="order-details flex gap-16 justify-between border-t-1 pt-2 text-xl">
         <div className="price font-extrabold ">₹{item.price}</div>
         <div className="rating text-amber-800">4.5⭐</div>
