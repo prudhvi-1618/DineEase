@@ -2,8 +2,14 @@ const mongoose = require("mongoose")
 const menuItem = require("../models/menuItem")
 
 async function handleAllMenu(req,res){
-    let items = await menuItem.find({});
-    res.json({"response":items})
+    try {
+        let items = await menuItem.find({});
+        const categories = await menuItem.distinct('category'); 
+        res.status(200).json({"response":items,"categories":categories});
+    } catch (error) {
+        console.error('Error fetching categories:', error);
+        res.status(500).json({ error: 'Failed to fetch categories' });
+    }
 }
 
 async function handleCreateMenuItem(req,res){
