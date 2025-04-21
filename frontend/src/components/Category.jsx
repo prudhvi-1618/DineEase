@@ -1,5 +1,4 @@
-import React, { useState,useEffect } from 'react'
-import { CiSearch } from "react-icons/ci";
+import React, { useState,useEffect } from 'react';
 import api from "../api"
 import Card from './Card';
 
@@ -34,7 +33,7 @@ const Category = () => {
           </div>
         </div>
       </div>
-      <div className="category px-4 ">
+      <div className="category px-4 my-2">
         <div className="categories-list flex gap-3">
             <div 
               className={`px-3 py-2 rounded-2xl text-xl border-2 cursor-pointer hover:bg-zinc-900 hover:text-zinc-100 ${selectedCategory===''?"bg-zinc-900 text-zinc-100 ":null}`}

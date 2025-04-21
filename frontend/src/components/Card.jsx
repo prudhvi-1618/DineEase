@@ -8,7 +8,7 @@ const Card = ({item}) => {
             "item_id": item._id, 
             "name":item.name,
             "imageUrl":item.imageUrl,
-            "quantity": 2,
+            "quantity": 1,
             "price": item.price
 
         }];
