@@ -25,7 +25,7 @@ const Card = ({item}) => {
         <div className="price font-extrabold ">₹{item.price}</div>
         <div className="rating text-amber-800">4.5⭐</div>
         </div>
-        <div className="btn border-1 mb-2 px-4 py-2 rounded-2xl cursor-pointer "
+        <div className="btn border-1 mb-2 px-4 py-2 rounded-2xl cursor-pointer hover:bg-[#4AB7B6] hover:text-zinc-50 hover:border-0"
             onClick={AddCart}
         >Add to Cart</div>
     </div>

@@ -23,7 +23,7 @@ const Cart = () => {
 
   function decrementQuantity(itemId){
     const updatedCartQuantity = myCart.map(item =>{
-      if(item.quantity<=0) return item;
+      if(item.quantity<=1) return item;
       return (item.item_id === itemId)?{...item,quantity:item.quantity-1}:item;
   });
     setMyCart(updatedCartQuantity);
