@@ -49,7 +49,7 @@ const Cart = () => {
           decrementQuantity={decrementQuantity}/>
         ))}
       </div>
-      <div className="place-order sm:w-[30vw] h-fit shadow-sm p-4 ">
+      <div className="place-order sm:w-[30vw] md:mb-2 mb-[20vh] h-fit shadow-sm p-4 ">
         <div className="text-3xl border-b-1 py-2 mb-4">PRICE DETAILS</div>
         <div className="items text-xl px-3 pb-2 flex justify-between">
           <div>No. of Items</div>
