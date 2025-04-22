@@ -1,4 +1,5 @@
 import React, { useState,useEffect } from 'react';
+import {ToastContainer,toast} from 'react-toastify'
 import api from "../api"
 import Card from './Card';
 
@@ -10,10 +11,16 @@ const Category = () => {
   const [selectedCategory, setSelectedCategory] = useState('');
   useEffect(()=>{
     async function fetch(){
-      const res = await api.get("/menu");
-      setItems(res.data.response);
-      setFilteredItems(res.data.response);
-      setCategories(res.data.categories);     
+      toast.success("Fetching Data",{autoClose:1000});
+      try{
+        const res = await api.get("/menu");
+        setItems(res.data.response);
+        setFilteredItems(res.data.response);
+        setCategories(res.data.categories); 
+      }catch(e){
+        toast.error("Found an error")
+      }
+          
     }
     fetch();
   },[])
@@ -54,6 +61,7 @@ const Category = () => {
          ))}
         </div>
       </div>
+      <ToastContainer />
     </div>
   )
 }
