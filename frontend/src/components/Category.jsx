@@ -2,9 +2,10 @@ import React, { useState,useEffect } from 'react';
 import {ToastContainer,toast} from 'react-toastify'
 import api from "../api"
 import Card from './Card';
+import SkeletonCard from './SkeletonCard';
 
 const Category = () => {
-
+  const [loading,setLoading] = useState(true);
   const [items,setItems] = useState([]);
   const [filteredItems,setFilteredItems] = useState([]);
   const [categories,setCategories] = useState([]);
@@ -13,12 +14,15 @@ const Category = () => {
     async function fetch(){
       toast.success("Fetching Data",{autoClose:1000});
       try{
+        setLoading(true);
         const res = await api.get("/menu");
         setItems(res.data.response);
         setFilteredItems(res.data.response);
         setCategories(res.data.categories); 
       }catch(e){
         toast.error("Found an error")
+      }finally{
+        setLoading(false);
       }
           
     }
@@ -28,7 +32,7 @@ const Category = () => {
   useEffect(()=>{
     const filterItems = selectedCategory? items.filter(item => item.category === selectedCategory): items; 
     setFilteredItems(filterItems);
-  },[selectedCategory,items])
+  },[selectedCategory,items]);
 
   return (
     <div className='flex-1 md:mx-32 '>
@@ -47,7 +51,8 @@ const Category = () => {
               onClick={()=>setSelectedCategory('')}>
                All
             </div>
-            {categories.map((category,index)=>(
+            {loading?Array.from({length:4}).map((_,index)=><div key={index} className='bg-gray-100 w-24 h-12 animate-pulse rounded-xl' />)
+            :categories.map((category,index)=>(
               <div key={index} 
                 className={`px-3 py-2 rounded-2xl text-xl border-2 cursor-pointer hover:bg-zinc-900 hover:text-zinc-100 ${selectedCategory===category?"bg-zinc-900 text-zinc-100 ":null}`}
                 onClick={()=>setSelectedCategory(category)}>
@@ -56,7 +61,8 @@ const Category = () => {
             ))}
         </div>
         <div className="cards my-4 flex flex-wrap gap-4 md:mb-2 mb-[20vh]">
-         {filteredItems.map((item,index)=>(
+         {loading?Array.from({ length: 8 }).map((_,index)=> <SkeletonCard key={index}/> )
+         :filteredItems.map((item,index)=>(
             <Card key={index} item={item} />
          ))}
         </div>
