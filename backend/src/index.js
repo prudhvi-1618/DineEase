@@ -4,6 +4,7 @@ const cors = require("cors");
 
 const menuItemRouter = require("./routes/menuItem.js")
 const orderRouter = require("./routes/order.js")
+const otpRouter = require("./routes/otp.js")
 
 const {connectMongoDb} = require('./config/MongoDbConnect.js');
 
@@ -29,7 +30,7 @@ createOrderandItemTable();
 //Routes
 app.use("/api/menu",menuItemRouter);
 app.use("/api/order",orderRouter);
-
+app.use("/api/otp",otpRouter);
 
 
 //Server Running
