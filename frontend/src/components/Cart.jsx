@@ -68,7 +68,7 @@ const Cart = () => {
             <div className="font-semibold">₹ {myCart.reduce((a, item) => a + (item.price)*(item.quantity), 0)}</div>
         </div>
        <div className="flex justify-end">
-        <Link to="signup" className="place-order text-3xl p-3 bg-zinc-800 text-zinc-100 w-fit rounded-xl cursor-pointer">
+        <Link to="signin/?order=true" className="place-order text-3xl p-3 bg-zinc-800 text-zinc-100 w-fit rounded-xl cursor-pointer">
             Order Now
           </Link>
        </div>

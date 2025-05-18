@@ -17,8 +17,9 @@ function App() {
           <Route path="category" element={<Category/>} />
           <Route path="cart">
               <Route index element={<Cart/>}/>
-              <Route path="signup" element={<UserForm/>}/>
+              <Route path="signin" element={<UserForm/>}/>
           </Route>
+          <Route path="signin" element={<UserForm/>}/>
           <Route path="user/:phone_number" element={<User/>} />
         </Route>
       </Routes>

@@ -1,27 +1,36 @@
 import React from 'react'
 import api from "../api"
 import { CART } from '../constants'
-import { useNavigate } from 'react-router'
+import { useNavigate, useLocation } from 'react-router'
 const UserForm = () => {
-    
+
+  const location = useLocation();
+  const queryParams = new URLSearchParams(location.search);
+  const order_state = queryParams.get('order');
+
   const navigate = useNavigate();
+
   const Order = async (e)=>{
     e.preventDefault();
-    const items = localStorage.getItem(CART);
-    const cart = items ? JSON.parse(items) : [];
+
     const phone_number = e.target.phone.value;
-    const res = await api.post("/order",{
-        customer_name:e.target.username.value,
-        phone_number:e.target.phone.value,
-        cart:cart
-    });
-    localStorage.clear();
+    
+    if(order_state==true){
+      const items = localStorage.getItem(CART);
+      const cart = items ? JSON.parse(items) : [];
+      const res = await api.post("/order",{
+          customer_name:e.target.username.value,
+          phone_number:e.target.phone.value,
+          cart:cart
+      });
+      localStorage.clear();
+    }
     navigate(`/user/${phone_number}`);
   }
   return (
     <div className='flex-1  m-2 flex justify-center'>
         <div className='mt-8 md:m-8 w-[90vw] md:w-[50vw] flex flex-col gap-5'>
-            <h1 className='text-4xl font-medium'>Fill your Details</h1>
+            <h1 className='text-4xl font-medium'>Fill your details</h1>
             <div>
               <form onSubmit={Order} className='text-[1.1rem] text-zinc-600 font-medium flex flex-col gap-2'>
                 <div className='w-full flex flex-col'>
@@ -41,7 +50,7 @@ const UserForm = () => {
                 <button type="submit"
                   
                   className='mb-[30vw] sm:my-3 text-2xltext-zinc-600 hover:bg-zinc-800 hover:text-[#fff] hover:font-normal hover:border-zinc-700 font-medium px-3 py-2.5 border-2 border-zinc-500 rounded-2xl w-fit cursor-pointer'>
-                  Sign up
+                  Sign in
                 </button>
               </form>
             </div>
