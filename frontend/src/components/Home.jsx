@@ -4,7 +4,9 @@ import Frame1 from '../assets/Frame1.png';
 import Card from "../components/Card"
 
 const Home = () => {
-  
+  useEffect(()=>{
+    document.title="Dine Ease - Order, Eat, Enjoy!";
+  },[]);
   return (
     <div className='flex-1 md:mx-32 '>
       <div className='bg-[#2A4BA0] md:bg-[#ffff] w-full px-6 pt-6 pb-16 md:py-4 rounded-b-4xl'>

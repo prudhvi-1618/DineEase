@@ -31,6 +31,7 @@ const Cart = () => {
   }
 
   useEffect(()=>{
+    document.title="Dine Ease - View, Adjust, Checkout!";
     function fetch(){
       const items = localStorage.getItem(CART);
       const cart = items ? JSON.parse(items) : [];

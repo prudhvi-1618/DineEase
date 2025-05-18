@@ -8,6 +8,7 @@ const User = () => {
   const [items, setItems] = useState([]);
 
   useEffect(() => {
+    document.title="Dine Ease - Past Bites, Future Cravings!";
     async function fetch() {
       try {
         const res = await api.get(`/order/history/${phone_number}`);

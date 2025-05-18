@@ -30,6 +30,7 @@ const Category = () => {
   },[])
 
   useEffect(()=>{
+    document.title="Dine Ease - Browse, Pick, Taste!";
     const filterItems = selectedCategory? items.filter(item => item.category === selectedCategory): items; 
     setFilteredItems(filterItems);
   },[selectedCategory,items]);
