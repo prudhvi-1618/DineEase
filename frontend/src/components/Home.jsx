@@ -11,17 +11,17 @@ const Home = () => {
     <div className='flex-1 md:mx-32 '>
       <div className='bg-[#2A4BA0] md:bg-[#ffff] w-full px-6 pt-6 pb-16 md:py-4 rounded-b-4xl'>
         <div className="start flex md:flex-row flex-col justify-between w-full">
-          <div className="greet text-6xl font-medium md:text-4xl py-6 md:py-4 text-[#7D8FAB]">Hi, Halal</div>
-          <div className="search bg-[#EFF1F3] rounded-2xl flex justify-center items-center px-2 text-[#7D8FAB]">
+          <div className="greet text-6xl font-medium md:text-4xl py-6 md:py-4 text-[#7D8FAB]">Good Food, Fast Clicks</div>
+          <div className="search bg-[#EFF1F3] rounded-2xl flex justify-baseline items-center px-2 text-[#7D8FAB]">
             <div className="search-icon "><CiSearch size="36" /></div>
-            <input type="text" className='px-4 text-2xl focus:outline-0' placeholder='Search Anything..' />
+            <input type="text" className='md:py-0 py-3 text-2xl focus:outline-0' placeholder='Search Anything..'  />
           </div>
         </div>
       </div>
 
 
-      <div className="banner flex md:justify-between justify-center  my-6 w-full md:w-[700px]">
-        <img src={Frame1} alt="" srcset="" width="800px" height="400px" className='w-[40vw] rounded-3xl' />
+      <div className="banner flex md:justify-between   my-6 w-full md:w-[700px] px-1">
+        <img src={Frame1} alt="" srcset="" width="800px" height="400px" className='md:w-[40vw] rounded-3xl' />
       </div>
 
 
