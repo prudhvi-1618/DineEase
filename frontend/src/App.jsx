@@ -5,6 +5,7 @@ import Category from "./components/Category";
 import Cart from "./components/Cart";
 import User from "./components/User";
 import UserForm from "./components/UserForm";
+import OtpVerify from "./components/OtpVerify";
 
 
 function App() {
@@ -19,8 +20,11 @@ function App() {
               <Route index element={<Cart/>}/>
               <Route path="signin" element={<UserForm/>}/>
           </Route>
-          <Route path="signin" element={<UserForm/>}/>
-          <Route path="user/:phone_number" element={<User/>} />
+          <Route path="user">
+            <Route path="signin" element={<UserForm/>}/>
+            <Route path="verify" element={<OtpVerify/>}/>
+            <Route path=":phone_number" element={<User/>} />
+          </Route>
         </Route>
       </Routes>
     </BrowserRouter>

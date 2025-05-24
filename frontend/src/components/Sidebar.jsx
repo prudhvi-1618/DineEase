@@ -21,12 +21,12 @@ const menuItem = [
     {
         icon: <FiUser />,
         name: "User",
-        url:`signin`
+        url:`user/signin`
     },
 ]
 const Sidebar = () => {
     return (
-        <div className='absolute bottom-0 md:relative md:top-0 md:left-7 '>
+        <div className='absolute bottom-0 md:relative md:top-0 md:left-0 '>
             <div className='fixed bottom-0 z-10 md:sticky md:top-5 bg-[#fff] flex flex-row md:flex-col w-[100vw]  md:w-fit p-3 md:my-7 justify-between md:justify-baseline md:items-center gap-5 '>
                 {menuItem.map((item, index) => (
                     <NavLink to={item.url} key={index} 
